@@ -72,7 +72,7 @@ session_start();
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" name="kembali">
+							<button class="login100-form-btn" name="kembali" href="index.php">
 								kembali
 							</button>
 						</div>
@@ -85,8 +85,8 @@ session_start();
 							Or Sign Up Using
 						</span> -->
 
-						<a href="#" class="txt2">
-							Sign Up
+						<a href="daftar2.php" class="txt2">
+							Tidak Mempunyai akun silahkan Mendaftar Disini !!!
 						</a>
 					</div>
 				</form>
@@ -100,9 +100,21 @@ if (isset($_POST['login']))
 	$ambil = $koneksi->query("SELECT * FROM pelanggan WHERE email_pelanggan='$_POST[email]'
     AND password_pelanggan='$_POST[pass]'");
     $yangcocok = $ambil->num_rows;
-        if ($yangcocok==1) 
+        if ($yangcocok > 0) 
         {
-            $_SESSION['pelanggan']=$ambil->fetch_assoc();
+
+        	$data = mysqli_fetch_assoc($ambil);
+
+        	if ($data['level']=="admin"){
+
+            $_SESSION['pelanggan']=$data['nama_pelanggan'];
+            echo "<div class='alert alert-info'>Login sukses</div>";
+ 			echo "<meta http-equiv='refresh' content='1;url=admin/index.php'>";
+        }
+        else if ($data['level']=="costumer"){
+
+           	$_SESSION['nama_pelanggan']=$data['nama_pelanggan'];
+           	$_SESSION['id_pelanggan']=$data['id_pelanggan'];
             echo "<div class='alert alert-info'>Login sukses</div>";
  			echo "<meta http-equiv='refresh' content='1;url=index.php'>";
         }
@@ -113,6 +125,8 @@ if (isset($_POST['login']))
                                         
         }
     }
+}
+
 else if (isset($_POST['kembali']))
 {
         	echo "<meta http-equiv='refresh' content ='1;url=index.php'>";

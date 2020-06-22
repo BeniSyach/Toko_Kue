@@ -179,6 +179,17 @@ iframe {
   background-position: center;
   background-size: cover;
 }
+.container-login10 {
+  width: auto;  
+  min-height: auto;
+  flex-wrap: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
 
 .wrap-login100 {
   width: 500px;

@@ -3,7 +3,7 @@ session_start();
 // koneksi ke data base
  include 'koneksi.php';
 
-if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]) ) 
+if (!isset($_SESSION["id_pelanggan"]) OR empty($_SESSION["nama_pelanggan"]) ) 
 {
 	echo "<script>alert('Silahkan Login');</script>";
 	echo "<script>location='login.php';</script>";
@@ -15,7 +15,7 @@ $ambil=$koneksi->query("SELECT * FROM pembelian WHERE id_pembelian='$idpem'");
 $detpem=$ambil->fetch_assoc();
 
 $idpelangganyangbeli=$detpem["id_pelanggan"];
-$idplangganyanglogin=$_SESSION["pelanggan"]["id_pelanggan"];
+$idplangganyanglogin=$_SESSION["id_pelanggan"];
 
 
 if ($idpelangganyangbeli!==$idplangganyanglogin) {
@@ -26,10 +26,19 @@ if ($idpelangganyangbeli!==$idplangganyanglogin) {
 
  ?>
 
+ <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Pembayaran</title>
+	<style>
+        body{
+            background-image: url('admin/assets/img/bg-01.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
 <body>
@@ -51,7 +60,7 @@ if ($idpelangganyangbeli!==$idplangganyanglogin) {
 			</div>
 			<div class="form-group">
 				<label>Jumlah</label>
-				<input type="number" name="jumlah" class="form-control" min="1" placeholder="Nominal pembayaran">
+				<input type="number" name="jumlah" class="form-control" min="1" placeholder="jumlah barang">
 			</div>
 			<div class="form-group">
 				<label>Foto bukti</label>

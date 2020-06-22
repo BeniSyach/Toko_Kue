@@ -2,21 +2,11 @@
 session_start(); 
 // koneksi ke data base
  include 'koneksi.php';
+  include 'navbar.php'; 
  ?>
 
+
  
-        <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style-portfolio.css">
-        <link rel="stylesheet" href="css/picto-foundry-food.css" />
-        <link rel="stylesheet" href="css/jquery-ui.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link rel="icon" href="favicon-1.ico" type="image/x-icon">
         <?php
 $per_hal = 20;
 $jumlah_record = mysqli_query($koneksi, "SELECT * from menu");
@@ -26,17 +16,45 @@ $page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
 $start = ($page - 1) * $per_hal;
 ?>
 
+<link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style-portfolio.css">
+        <link rel="stylesheet" href="css/picto-foundry-food.css" >
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link rel="icon" href="favicon-1.ico" type="image/x-icon">
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 					
 	<title>BFN BAKERY</title>
+    <style>
+        body{
+            background-image: url('admin/assets/img/bg-01.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
+
 <body>
 
-<?php include 'navbar.php'; ?>
-<center><h0 style=" border: 0;color: black; font-size:40px">Katalog Produk</h0></center>
+<div class="row" id="cpy">
+      <div class="col-xs-12">
+        <p style="color : black; text-align: center;font-size: 50px;font-family: Cooper Std Black">KATALOG PRODUK</p>
+      </div>
+
+
+
 
 <!---- konten ---->
  <div class="container">
@@ -49,9 +67,9 @@ $start = ($page - 1) * $per_hal;
                        
                 <ul id="myTab" class="nav nav-pills nav-justified" role="tablist">
                         
-                    <li role="presentation" class="active"><a href="#kuetar" id="kuetar-tab" role="tab" data-toggle="tab" aria-controls="kuetar" aria-expanded="true">Cake Ultah</a></li>
-                    <li role="presentation"><a href="#kuekering" role="tab" id="kuekering-tab" data-toggle="tab" aria-controls="kuekering">Kue Kering</a></li>
-                    <li role="presentation"><a href="#kuebasah" role="tab" id="kuebasah-tab" data-toggle="tab" aria-controls="kuebasah">Kue Basah</a></li>
+                    <li role="presentation" class="active"><a style="color: black;" href="#kuetar" id="kuetar-tab" role="tab" data-toggle="tab" aria-controls="kuetar" aria-expanded="true">Cake Ultah</a></li>
+                    <li role="presentation"><a style="color: black;" href="#kuekering" role="tab" id="kuekering-tab" data-toggle="tab" aria-controls="kuekering" s>Kue Kering</a></li>
+                    <li role="presentation"><a style="color: black;" href="#kuebasah" role="tab" id="kuebasah-tab" data-toggle="tab" aria-controls="kuebasah">Kue Basah</a></li>
                 </ul>
                        
 <div id="myTabContent" class="tab-content">
@@ -71,7 +89,9 @@ $start = ($page - 1) * $per_hal;
                     <img src="foto/<?php echo $row['gambar'] ?>" class="img-rounded" height="250" width="220" class="col-md-12 img-responsive">
                     <div class="caption">
                         <h3><?php echo $row['nama']; ?></h3>
-                        <h5>Rp. <?php echo number_format($row['harga'] );?></h5>
+                        <h4>Stok Barang : <?php echo $row['stok_barang']; ?></h4>
+                        <h4>Rp. <?php echo number_format($row['harga'] );?></h4>
+
                         <a href="beli.php?id=<?php echo $row['id_produk']; ?>" class="btn btn-danger">Beli</a>
                         <a href="detail.php?id=<?php echo $row['id_produk'];?>"class="btn btn-primary">Detail</a>
                     </div>
@@ -99,7 +119,8 @@ $start = ($page - 1) * $per_hal;
                     <img src="foto/<?php echo $row['gambar'] ?>" class="img-rounded" height="250" width="220" class="col-md-12 img-responsive">
                     <div class="caption">
                         <h3><?php echo $row['nama']; ?></h3>
-                        <h5>Rp. <?php echo number_format($row['harga'] );?></h5>
+                        <h4>Stok Barang : <?php echo $row['stok_barang']; ?></h4>
+                        <h4>Rp. <?php echo number_format($row['harga'] );?></h4>
                         <a href="beli.php?id=<?php echo $row['id_produk']; ?>" class="btn btn-danger">Beli</a>
                         <a href="detail.php?id=<?php echo $row['id_produk'];?>"class="btn btn-primary">Detail</a>
                     </div>
@@ -127,7 +148,8 @@ $start = ($page - 1) * $per_hal;
                     <img src="foto/<?php echo $row['gambar'] ?>" class="img-rounded" height="250" width="220" class="col-md-12 img-responsive">
                     <div class="caption">
                         <h3><?php echo $row['nama']; ?></h3>
-                        <h5>Rp. <?php echo number_format($row['harga'] );?></h5>
+                        <h4>Stok Barang : <?php echo $row['stok_barang']; ?></h4>
+                        <h4>Rp. <?php echo number_format($row['harga'] );?></h4>
                         <a href="beli.php?id=<?php echo $row['id_produk']; ?>" class="btn btn-danger">Beli</a>
                         <a href="detail.php?id=<?php echo $row['id_produk'];?>"class="btn btn-primary">Detail</a>
                     </div>
@@ -154,6 +176,7 @@ $start = ($page - 1) * $per_hal;
                     <img src="foto/<?php echo $row['gambar'] ?>" class="img-rounded" height="250" width="220" class="col-md-12 img-responsive">
                     <div class="caption">
                         <h3><?php echo $row['nama']; ?></h3>
+                        <h5>Stok Barang : <?php echo $row['stok_barang']; ?></h5>
                         <h5>Rp. <?php echo number_format($row['harga'] );?></h5>
                         <a href="beli.php?id=<?php echo $row['id_produk']; ?>" class="btn btn-danger">Beli</a>
                         <a href="detail.php?id=<?php echo $row['id_produk'];?>"class="btn btn-primary">Detail</a>
@@ -208,16 +231,17 @@ $start = ($page - 1) * $per_hal;
             </div>  
         </section>
 
+
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="js/jquery-1.10.2.js"></script>     
         <script type="text/javascript" src="js/jquery.mixitup.min.js" ></script>
         <script type="text/javascript" src="js/main.js" ></script>
+    
 
     </body>
     
+<?php include('component/footer.php'); ?>
 </html>
-		
-
 
 

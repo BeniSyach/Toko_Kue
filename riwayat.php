@@ -3,7 +3,7 @@ session_start();
 // koneksi ke data base
  include 'koneksi.php';
 
-if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]) ) 
+if (!isset($_SESSION["id_pelanggan"]) OR empty($_SESSION["nama_pelanggan"]) ) 
 {
 	echo "<script>alert('Silahkan Login');</script>";
 	echo "<script>location='login.php';</script>";
@@ -11,11 +11,25 @@ if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]) )
 }
 
  ?>
+ <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
+
+       
+        <link rel="stylesheet" href="css/animate.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Riwayat</title>
+	<style>
+        body{
+            background-image: url('admin/assets/img/bg-01.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
 <body>
@@ -23,7 +37,8 @@ if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]) )
 <?php include 'navbar.php'; ?>
 <section class="riwayat">
 	<div class="container">
-		<h3>Riwayat belanja <?php echo $_SESSION["pelanggan"]["nama_pelanggan"]; ?></h3>
+		<h3>Riwayat belanja <?php echo $_SESSION["nama_pelanggan"]; ?></h3>
+		<br></br>
 
 		<table class="table table-bordered">
 			<thead>
@@ -38,7 +53,7 @@ if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]) )
 			<tbody>
 				<?php $nomor=1; ?>
 				<?php 
-				$_pelanggan=$_SESSION["pelanggan"]['id_pelanggan'];
+				$_pelanggan=$_SESSION["id_pelanggan"];
 				$ambil=$koneksi->query("SELECT * FROM pembelian WHERE id_pelanggan='$_pelanggan'");
 				while ($pecah=$ambil->fetch_assoc()){
 				 ?>

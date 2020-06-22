@@ -1,17 +1,32 @@
 <?php  include 'koneksi.php';
 session_start();
 
-if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]) ) 
+if (!isset($_SESSION["id_pelanggan"]) OR empty($_SESSION["nama_pelanggan"]) ) 
 {
 	echo "<script>alert('Silahkan Login');</script>";
 	echo "<script>location='login.php';</script>";
 }
 
 $id_halaman=$_GET['id']; ?>
+<link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
+
+       
+        <link rel="stylesheet" href="css/animate.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>nota pembelian</title>
+	<style>
+        body{
+            background-image: url('admin/assets/img/bg-01.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
 <body>
@@ -22,6 +37,7 @@ $id_halaman=$_GET['id']; ?>
 	<div class="container">
 		
 		<h2>Nota Pembelian</h2>
+		<br></br>
 
 <?php 
 $ambil= $koneksi->query("SELECT * FROM pembelian JOIN pelanggan 
@@ -32,7 +48,7 @@ $detail = $ambil-> fetch_assoc();
 
 <?php 
 $idpelangganyangbeli=$detail["id_pelanggan"];
-$idplangganyanglogin=$_SESSION["pelanggan"]["id_pelanggan"];
+$idplangganyanglogin=$_SESSION["id_pelanggan"];
 
 if ($idpelangganyangbeli!==$idplangganyanglogin) {
 	echo "<script>alert('Data terproteksi');</script>";
@@ -51,17 +67,17 @@ if ($idpelangganyangbeli!==$idplangganyanglogin) {
 	</div>
 	<div class="col-md-4">
 		<h3>Pelanggan</h3>
-		<strong><?php echo $detail['nama_pelanggan']; ?></strong><br>
+		<strong><?php echo $detail['nama_pembeli']; ?></strong><br>
 		<p>
-			<?php echo $detail['telphone_pelanggan']; ?><br>
-			<?php echo $detail['email_pelanggan']; ?>
+			<?php echo $detail['no_telp']; ?><br>
+			<?php echo $detail['email_pembeli']; ?>
 		</p>
 	</div>
 	<div class="col-md-4">
 		<h3>Kota tujuan</h3>
 		<strong><?php echo $detail['nama_kota']; ?></strong><br>
 		Ongkos kirim : Rp. <?php echo number_format($detail['tarif']); ?><br> 
-		Alamat penerima :<?php echo $detail['alamat_pengiriman']; ?><br>
+		Alamat penerima : <?php echo $detail['alamat_pengiriman']; ?><br>
 	</div> 
 </div>
 
@@ -95,13 +111,14 @@ if ($idpelangganyangbeli!==$idplangganyanglogin) {
 	<div class="col-md-7">
 		<div class="alert alert-info">
 			<p>
-				Silahkan melakukan pembayaran sebesar Rp. <?php echo number_format($detail['total_pembelian']); ?>ke <br>
+				Silahkan melakukan pembayaran sebesar Rp. <?php echo number_format($detail['total_pembelian']); ?> ke <br>
 				<strong>BANK MANDIRI 131-000705-9308 AN. BENI KETAREN</strong>
 			</p>
 			<!-- <a href="print.php?id=<?php echo $id;?>" >print</a> -->
 			
 		</div>
 		<a href="print.php?id=<?php echo $id_halaman;?>" class="btn btn-primary">Print</a>
+		<a href="riwayat.php?id=<?php echo $id_halaman;?>" class="btn btn-primary">Konfirmasi Pembayaran</a>
 	</div>
 </div>
 

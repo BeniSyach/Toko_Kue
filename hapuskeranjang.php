@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]) ) 
+if (!isset($_SESSION["id_pelanggan"]) OR empty($_SESSION["nama_pelanggan"]) ) 
 {
 	echo "<script>alert('Silahkan Login');</script>";
 	echo "<script>location='login.php';</script>";

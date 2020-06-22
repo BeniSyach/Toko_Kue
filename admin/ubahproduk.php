@@ -16,6 +16,10 @@ $pecah=$ambil->fetch_assoc();
 		<input type="number" class="form-control" value="<?php echo $pecah['harga']; ?>" name="harga">
 	</div>
 	<div class="form-group">
+		<label>Stok Barang </label>
+		<input type="number" class="form-control" value="<?php echo $pecah['stok_barang']; ?>" name="stok_barang">
+	</div>
+	<div class="form-group">
 		<img src="../foto/<?php echo $pecah['gambar']; ?>" width="200">
 	</div>
 	<div class="form-group">
@@ -35,23 +39,23 @@ $pecah=$ambil->fetch_assoc();
 
 <?php 
 if (isset($_POST['ubah']))
-{
-	$menu=$_FILES['foto']['menu'];
+{  
+	$menu = $_FILES['foto']['menu'];
 	$lokasifoto = $_FILES['foto']['tmp_name'];
 
 	if (!empty($lokasifoto))
 	{
 		move_uploaded_file($lokasifoto, "../foto/".$namafoto);
-		$koneksi->query("UPDATE menu SET nama ='$_POST[nama]',
-			harga='$_POST[harga]',foto='$namafoto',deskripsi_produk='$_POST[deskripsi]'
-			WHERE id_produk='$_GET[id]'");
+
+		$koneksi->query("UPDATE menu SET nama='$_POST[nama]',
+			harga='$_POST[harga]',stok_barang='$_POST[stok_barang]',gambar='$namafoto',deskripsi='$_POST[deskripsi]' WHERE id_produk='$_GET[id]'");
 		
 	}
 	else
 	{
-		$koneksi->query("UPDATE produk SET nama_produk ='$_POST[nama]',
-			harga_produk='$_POST[harga]',berat_produk='$_POST[berat]',
-			deskripsi_produk='$_POST[deskripsi]' WHERE id_produk='$_GET[id]'");
+		$koneksi->query("UPDATE menu SET nama ='$_POST[nama]',
+			harga='$_POST[harga]',stok_barang='$_POST[stok_barang]',
+			deskripsi='$_POST[deskripsi]' WHERE id_produk='$_GET[id]'");
 		
 	}
 	echo "<script>alert('produk telah diubah');</script>";

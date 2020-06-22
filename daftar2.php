@@ -8,6 +8,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daftar</title>
+    <style>
+        body{
+            background-image: url('admin/assets/img/bg-01.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 	<!-- BOOTSTRAP STYLES-->
      <!-- FONTAWESOME STYLES-->
         <!-- CUSTOM STYLES-->
@@ -90,6 +97,7 @@
                                             $telp=$_POST["telp"];
                                             $alamat=$_POST["alamat"];
                                             $kota=$_POST["kota"];
+                                            $level="costumer";
 
                                             $ambil=$koneksi->query("SELECT*FROM pelanggan WHERE email_pelanggan ='$email'");
                                             $cocok=$ambil->num_rows;
@@ -104,7 +112,7 @@
                                             {
 
                                               $koneksi->query("INSERT INTO pelanggan
-                                                    (email_pelanggan,nama_pelanggan,password_pelanggan,telphone_pelanggan,nama_kota,alamat_pelanggan) VALUES ('$email','$nama','$password','$telp','$kota','$alamat')");
+                                                    (email_pelanggan,nama_pelanggan,password_pelanggan,telphone_pelanggan,nama_kota,alamat_pelanggan,level) VALUES ('$email','$nama','$password','$telp','$kota','$alamat','$level')");
                                                 
                                                 echo "<script>alert('silahkan login');</script>";
                                                 echo "<script>location='login.php';</script>";

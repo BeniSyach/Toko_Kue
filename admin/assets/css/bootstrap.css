@@ -3976,18 +3976,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-width: 1px 0 0;
 }
 .navbar-brand {
-  float: left;
-  height: 50px;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
+  position: relative;
+  left: 15px;
+  background-size: contain;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
 }
 .navbar-brand > img {
-  display: block;
+  height: 100%;
+  width: auto;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,

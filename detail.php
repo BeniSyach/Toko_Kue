@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 
+
 <?php include 'koneksi.php';?>
 <?php $id_produk=$_GET['id'];
 $ambildata=$koneksi->query("SELECT *FROM menu WHERE id_produk='$id_produk'");
@@ -8,14 +9,22 @@ $pecah=$ambildata->fetch_assoc();
 
  ?>
 
+<?php include 'navbar.php'; ?>
  <!DOCTYPE html>
  <html>
  <head>
  	<title>detail produk</title>
+ 	<style>
+        body{
+            background-image: url('admin/assets/img/bg-01.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
  	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
  </head>
  <body>
- <?php include 'navbar.php'; ?>
+
  <section class="konten">
  	<div class="container">
  		<div class="row">
@@ -40,6 +49,7 @@ $pecah=$ambildata->fetch_assoc();
  				<?php
  				if (isset($_POST["beli"])) 
  				{
+
  					$jumlah=$_POST["jumlah"];
  					$_SESSION["keranjang"][$id_produk]=$jumlah;
 

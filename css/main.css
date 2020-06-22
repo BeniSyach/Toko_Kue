@@ -1,3 +1,10 @@
+.panel-footer {
+  padding: 10px 15px;
+  background-color: #96E16B;
+  color:#9d9d9d;
+    font-size:14px;
+    font-weight:bold;   
+}
 h1 {
     font-size: 37px;
     font-weight: 900;

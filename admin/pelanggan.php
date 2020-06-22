@@ -7,6 +7,8 @@
 			<th>Email</th>
 			<th>Nama</th>
 			<th>Telphone</th>
+			<th>Alamat Pelanggan</th>
+			<th>level</th>
 			<th>Aksi</th>
 		</tr>
 	</thead>
@@ -19,7 +21,11 @@
 			<td><?php echo $pecah['email_pelanggan']; ?></td>
 			<td><?php echo $pecah['nama_pelanggan']; ?></td>
 			<td><?php echo $pecah['telphone_pelanggan']; ?></td>
+			<td><?php echo $pecah['alamat_pelanggan']; ?></td>
+			<td><?php echo $pecah['level']; ?></td>
 			<td>
+				<a href="index.php?halaman=ubahpelanggan&id=<?php echo $pecah['id_pelanggan']; ?>" class="btn-warning btn">Ubah</a>
+
 				<a href="index.php?halaman=hapuspelanggan&id=<?php echo $pecah['id_pelanggan']; ?>" class="btn-danger btn">Hapus</a>
 			</td>
 		</tr>

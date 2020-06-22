@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include 'koneksi.php';
+ include 'navbar.php'; 
 
 
 
@@ -24,25 +25,30 @@ if (empty($_SESSION['keranjang']) OR !isset($_SESSION['keranjang']))
 <html>
 <head>
 	<title>keranjang</title>
+	<style>
+        body{
+            background-image: url('admin/assets/img/bg-01.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
 <body>
-
-<?php include 'navbar.php'; ?>
-
+        
 <section class="konten">
 	<div class="container">
-		<h1>Keranjang belanja</h1>
+		 <h1 style="font-family: Forte; color:"><strong>Keranjang Belanja</strong></h1>
 		<hr>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>No</th>
-					<th>Produk</th>
-					<th>Harga </th>
-					<th>Jumlah</th>
-					<th>Subharga </th>
-					<th>Aksi</th>
+					<th >No</th>
+					<th >Produk</th>
+					<th >Harga </th>
+					<th >Jumlah</th>
+					<th >Subharga </th>
+					<th >Aksi</th>
 				</tr>
 			</thead>
 			<tbody>

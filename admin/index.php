@@ -40,27 +40,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.php">BFN BAKERY</a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 14px;"> Selamat datang <?php echo $_SESSION["pelanggan"]["nama_pelanggan"]; ?> &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 14px;"> Selamat datang <?php echo $_SESSION["pelanggan"]; ?> &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+                    <img src="../logo.png" class="user-image img-responsive"/>
 					</li>
 				
 					
                     <li><a href="index.php"><i class="fa fa-dashboard fa-3x"></i> Home</a></li>
                     <li><a href="index.php?halaman=produk"><i class="fa fa-dashboard fa-3x"></i> Produk</a></li>
                     <li><a href="index.php?halaman=pembelian"><i class="fa fa-dashboard fa-3x"></i> Pembelian</a></li>
+                    <li><a href="index.php?halaman=statuspembelian"><i class="fa fa-dashboard fa-3x"></i> Status Pembayaran</a></li>
                     <li><a href="index.php?halaman=pelanggan"><i class="fa fa-dashboard fa-3x"></i> Pelanggan</a></li>
+                    <li><a href="index.php?halaman=transaksi"><i class=" fa fa-dashboard fa-3x"></i>Laporan Transaksi</a></li>
+                    <li><a href="index.php?halaman=ongkir"><i class=" fa fa-dashboard fa-3x"></i>Ongkir</a></li>
                     <li><a href="index.php?halaman=logout"><i class="fa fa-dashboard fa-3x"></i> Logout</a></li>
                      
                      
@@ -85,6 +91,10 @@ font-size: 14px;"> Selamat datang <?php echo $_SESSION["pelanggan"]["nama_pelang
                     {
                         include('pembelian.php');
                     }
+                    elseif ($_GET['halaman']=="statuspembelian")
+                    {
+                        include('statuspembelian.php');
+                    }
                      elseif ($_GET['halaman']=="pelanggan")
                     {
                         include('pelanggan.php');
@@ -97,7 +107,7 @@ font-size: 14px;"> Selamat datang <?php echo $_SESSION["pelanggan"]["nama_pelang
                     {
                       include('detail.php');
                     }
-                    elseif ($_GET['halaman']=="tambahproduk")
+                    else if ($_GET['halaman']=="tambahproduk")
                     {
                       include('tambahproduk.php');
                     }
@@ -113,9 +123,40 @@ font-size: 14px;"> Selamat datang <?php echo $_SESSION["pelanggan"]["nama_pelang
                     {
                       include('hapuspelanggan.php');
                     }
-                    
-
-
+                    elseif ($_GET['halaman']=="transaksi")
+                    {
+                      include('Laporan.php');
+                    }
+                    elseif ($_GET['halaman']=="ongkir") 
+                    {
+                      include('ongkir.php');
+                      
+                    }
+                    elseif ($_GET['halaman']=="ubahongkir") 
+                    {
+                      include('ubahongkir.php');
+                      
+                    }
+                    elseif ($_GET['halaman']=="tambahongkir") 
+                    {
+                      include('tambahongkir.php');
+                      
+                    }
+                    elseif ($_GET['halaman']=="hapusongkir") 
+                    {
+                      include('hapusongkir.php');
+                      
+                    }
+                    elseif ($_GET['halaman']=="ubahpelanggan") 
+                    {
+                      include('ubahpelanggan.php');
+                      
+                    }
+                     elseif ($_GET['halaman']=="hapuspembeli") 
+                    {
+                      include('hapuspembeli.php');
+                      
+                    }
                 } 
                 else
                 {
